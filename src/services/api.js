@@ -132,6 +132,47 @@ export const getAnalytics = async () => {
   }
 };
 
+export const getAnalyticsOverview = async () => {
+  try {
+    const response = await api.get('/analytics/overview');
+    return response.data;
+  } catch (error) {
+    console.error('Analytics overview error:', error);
+    // Return default data if API fails
+    return {
+      data: {
+        overview: {
+          totalMessages: 0,
+          totalConversations: 0,
+          avgResponseTime: 0,
+          totalKnowledge: 0,
+          averageRating: 0,
+        },
+        conversationsPerDay: [],
+        confidenceDistribution: [],
+        topQuestions: [],
+      },
+    };
+  }
+};
+
+export const getFeedbackAnalytics = async () => {
+  try {
+    const response = await api.get('/analytics/feedback');
+    return response.data;
+  } catch (error) {
+    console.error('Feedback analytics error:', error);
+    // Return default data if API fails
+    return {
+      data: {
+        feedbackStats: [],
+        averageRating: 0,
+        totalFeedback: 0,
+      },
+    };
+  }
+};
+
 // ==================== Feedback API ====================
 export const submitFeedback = async (conversationId, messageId, rating, comment) => {
   try {
