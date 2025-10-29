@@ -119,21 +119,7 @@ export default function ChatPage() {
                 <ReactMarkdown>{message.content}</ReactMarkdown>
               </div>
               
-              {/* แสดง Sources */}
-              {message.sources && message.sources.length > 0 && (
-                <div className="message-sources">
-                  <div className="sources-title">📚 แหล่งข้อมูล:</div>
-                  {message.sources.map((source, idx) => (
-                    <div key={idx} className="source-item">
-                      <span className="source-title">{source.title}</span>
-                      <span className="source-score">
-                        {(source.score * 100).toFixed(0)}%
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
+             
               {/* Metadata */}
               {message.metadata && (
                 <div className="message-metadata">
